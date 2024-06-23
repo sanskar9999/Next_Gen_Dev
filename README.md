@@ -1,2 +1,2 @@
 # Next_Gen_Dev
-Next_Gen_Dev internship tasks
+For AI internship projects by NextGenDev internship tasks
