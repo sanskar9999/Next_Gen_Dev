@@ -10,9 +10,30 @@ Repository for AI internship projects by NextGenDev.
 
 ---
 
-Tasks completed: 
-# Task 4: RECOMMENDATION SYSTEM
-Create a simple recommendation system that suggests items to users based on their
+# Tasks completed: 
+
+## Task 2: TIC-TAC-TOE AI
+### Implement an AI agent that plays the classic game of Tic-Tac-Toe against a human
+player. You can use algorithms like Minimax with or without Alpha-Beta Pruning to make
+the AI player unbeatable. This project will help you understand game theory and basic
+search algorithms.
+
+This implementation includes the following key components:
+
+A function to print the game board.
+A function to check for empty cells.
+A function to check if a player has won.
+The Minimax algorithm implementation.
+A function to get the best move for the AI.
+The main game loop that alternates between the human player and the AI.
+
+The AI uses the Minimax algorithm to determine the best move. This makes the AI unbeatable - the best a human player can achieve against it is a draw.
+To run the game, you can save this code in a Python file (e.g., tic_tac_toe_ai.py) and execute it. The game will start, and you'll be prompted to enter your moves.
+
+---
+
+## Task 4: RECOMMENDATION SYSTEM
+### Create a simple recommendation system that suggests items to users based on their
 preferences. You can use techniques like collaborative filtering or content-based filtering to
 recommend movies, books, or products to users.
 
