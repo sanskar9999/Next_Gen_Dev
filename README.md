@@ -1,5 +1,5 @@
 # Next_Gen_Dev
-Repository for AI internship projects by NextGenDev, internship tasks.
+Repository for AI internship projects by NextGenDev.
 
 ### Any 3 tasks needs to be completed out of these 5:
 - Task 1: CHATBOT WITH RULE-BASED RESPONSES
