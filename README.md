@@ -44,7 +44,7 @@ A function to get the best move for the AI.
 The main game loop that alternates between the human player and the AI.
 
 The AI uses the Minimax algorithm to determine the best move. This makes the AI unbeatable - the best a human player can achieve against it is a draw.
-To run the game, you can save this code in a Python file (e.g., tic_tac_toe_ai.py) and execute it. The game will start, and you'll be prompted to enter your moves.
+To run the game, you can save this code in a Python file (e.g., `tic_tac_toe_ai.py`) and execute it. The game will start, and you'll be prompted to enter your moves.
 
 ---
 
@@ -53,33 +53,31 @@ To run the game, you can save this code in a Python file (e.g., tic_tac_toe_ai.p
 
 This code implements a simple movie recommendation system using content-based filtering. Here's a breakdown of how it works:
 
-We start with a sample dataset of movies, including their titles, genres, directors, and descriptions.
-The MovieRecommendationSystem class is defined, which:
+1. We start with a sample dataset of movies, including their titles, genres, directors, and descriptions.
 
-Initializes with the movie data
-Uses TF-IDF (Term Frequency-Inverse Document Frequency) to convert movie descriptions into numerical vectors
-Calculates the cosine similarity between all pairs of movies based on their TF-IDF vectors
+2. The `MovieRecommendationSystem` class is defined, which:
+   - Initializes with the movie data
+   - Uses TF-IDF (Term Frequency-Inverse Document Frequency) to convert movie descriptions into numerical vectors
+   - Calculates the cosine similarity between all pairs of movies based on their TF-IDF vectors
 
+3. The `get_recommendations` method:
+   - Finds the index of the input movie
+   - Calculates the similarity scores between the input movie and all other movies
+   - Sorts the movies based on similarity scores
+   - Returns the top N most similar movies
 
-The get_recommendations method:
-
-Finds the index of the input movie
-Calculates the similarity scores between the input movie and all other movies
-Sorts the movies based on similarity scores
-Returns the top N most similar movies
-
-
-Finally, we create an instance of the recommendation system and get recommendations for "The Dark Knight".
+4. Finally, we create an instance of the recommendation system and get recommendations for "The Dark Knight".
 
 To use this system:
 
-Initialize the recommender with your movie data:
-pythonCopyrecommender = MovieRecommendationSystem(movies_data)
+1. Initialize the recommender with your movie data:
+   ```python
+   recommender = MovieRecommendationSystem(movies_data)
+   ```
 
-Get recommendations for any movie in the dataset:
-pythonCopyrecommendations = recommender.get_recommendations("The Dark Knight")
-
-
-This system recommends movies based on the similarity of their descriptions.
+2. Get recommendations for any movie in the dataset:
+   ```python
+   recommendations = recommender.get_recommendations("The Dark Knight")
+   ```
 
 ---
