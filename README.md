@@ -2,11 +2,11 @@
 For AI internship projects by NextGenDev internship tasks
 
 ### Any 3 tasks needs to be completed out of these 5:
-Task 1: CHATBOT WITH RULE-BASED RESPONSES
-Task 2: TIC-TAC-TOE AI
-Task 3: IMAGE CAPTIONING
-Task 4: RECOMMENDATION SYSTEM
-Task 5: FACE DETECTION AND RECOGNITION
+- Task 1: CHATBOT WITH RULE-BASED RESPONSES
+- Task 2: TIC-TAC-TOE AI
+- Task 3: IMAGE CAPTIONING
+- Task 4: RECOMMENDATION SYSTEM
+- Task 5: FACE DETECTION AND RECOGNITION
 
 ---
 
@@ -46,4 +46,5 @@ pythonCopyrecommendations = recommender.get_recommendations("The Dark Knight")
 
 
 This system recommends movies based on the similarity of their descriptions.
+
 ---
