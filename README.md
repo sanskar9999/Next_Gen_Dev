@@ -12,6 +12,25 @@ Repository for AI internship projects by NextGenDev.
 
 # Tasks completed: 
 
+## Task 1: CHATBOT WITH RULE-BASED RESPONSES
+### Build a simple chatbot that responds to user inputs based on predefined rules. Use if-else statements or pattern matching techniques to identify user queries and provide appropriate responses. This will give you a basic understanding of natural language processing and conversation flow.
+
+This simple chatbot script does the following:
+
+1. We define a function called `simple_chatbot` that takes a user input as a parameter.
+2. Inside the function, we use if-elif-else statements to match the user's input with predefined patterns or keywords.
+3. Based on the match, we return an appropriate response.
+4. We have a main loop that continuously asks for user input and prints the chatbot's response until the user types 'bye'.
+
+To run this chatbot, you can save the code in a Python file (e.g., `simple_chatbot.py`) and run it using a Python interpreter. The chatbot will greet you and wait for your input. You can then interact with it by typing messages, and it will respond based on the rules we've defined.
+This simple rule-based chatbot demonstrates the basics of natural language processing and conversation flow. However, it has limitations:
+
+It only understands exact matches or specific phrases.
+It doesn't handle context or maintain conversation state.
+Its responses are fixed and can't adapt to new situations.
+
+---
+
 ## Task 2: TIC-TAC-TOE AI
 ### Implement an AI agent that plays the classic game of Tic-Tac-Toe against a human player. You can use algorithms like Minimax with or without Alpha-Beta Pruning to make the AI player unbeatable. This project will help you understand game theory and basic search algorithms.
 
