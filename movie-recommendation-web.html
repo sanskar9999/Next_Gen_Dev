@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        select, button {
+            margin: 10px 0;
+            padding: 5px;
+        }
+        #recommendations {
+            margin-top: 20px;
+        }
+        .recommendation {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Recommendation System</h1>
+    <select id="movieSelect">
+        <option value="">Select a movie</option>
+    </select>
+    <button onclick="getRecommendations()">Get Recommendations</button>
+    <div id="recommendations"></div>
+
+    <script>
+        // Sample movie data
+        const moviesData = [
+            {title: "The Shawshank Redemption", genre: "Drama", director: "Frank Darabont", description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency."},
+            {title: "The Godfather", genre: "Crime, Drama", director: "Francis Ford Coppola", description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son."},
+            {title: "The Dark Knight", genre: "Action, Crime, Drama", director: "Christopher Nolan", description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice."},
+            {title: "Pulp Fiction", genre: "Crime, Drama", director: "Quentin Tarantino", description: "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption."},
+            {title: "Forrest Gump", genre: "Drama, Romance", director: "Robert Zemeckis", description: "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart."},
+            {title: "Inception", genre: "Action, Adventure, Sci-Fi", director: "Christopher Nolan", description: "A thief who enters the dreams of others to steal secrets from their subconscious is offered a chance to regain his old life as payment for a task considered to be impossible: inception."},
+            {title: "The Matrix", genre: "Action, Sci-Fi", director: "Lana Wachowski, Lilly Wachowski", description: "A computer programmer discovers that reality as he knows it is a simulation created by machines to subjugate humanity, and joins a rebellion to overthrow them."},
+            {title: "Goodfellas", genre: "Biography, Crime, Drama", director: "Martin Scorsese", description: "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate."},
+            {title: "The Silence of the Lambs", genre: "Crime, Drama, Thriller", director: "Jonathan Demme", description: "A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims."},
+            {title: "Fight Club", genre: "Drama", director: "David Fincher", description: "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more."}
+        ];
+
+        // Populate movie select options
+        const movieSelect = document.getElementById('movieSelect');
+        moviesData.forEach(movie => {
+            const option = document.createElement('option');
+            option.value = movie.title;
+            option.textContent = movie.title;
+            movieSelect.appendChild(option);
+        });
+
+        function cosineSimilarity(vecA, vecB) {
+            let dotProduct = 0;
+            let normA = 0;
+            let normB = 0;
+            for (let i = 0; i < vecA.length; i++) {
+                dotProduct += vecA[i] * vecB[i];
+                normA += vecA[i] * vecA[i];
+                normB += vecB[i] * vecB[i];
+            }
+            return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
+        }
+
+        function getRecommendations() {
+            const selectedMovie = document.getElementById('movieSelect').value;
+            if (!selectedMovie) {
+                alert('Please select a movie');
+                return;
+            }
+
+            const selectedMovieData = moviesData.find(movie => movie.title === selectedMovie);
+            const similarities = moviesData.map(movie => ({
+                title: movie.title,
+                similarity: cosineSimilarity(
+                    movie.description.toLowerCase().split(' '),
+                    selectedMovieData.description.toLowerCase().split(' ')
+                )
+            }));
+
+            similarities.sort((a, b) => b.similarity - a.similarity);
+
+            const recommendations = similarities.slice(1, 4);  // Get top 3 recommendations
+
+            const recommendationsDiv = document.getElementById('recommendations');
+            recommendationsDiv.innerHTML = '<h2>Recommendations:</h2>';
+            recommendations.forEach(rec => {
+                const movieData = moviesData.find(movie => movie.title === rec.title);
+                const recDiv = document.createElement('div');
+                recDiv.className = 'recommendation';
+                recDiv.innerHTML = `
+                    <h3>${movieData.title}</h3>
+                    <p><strong>Genre:</strong> ${movieData.genre}</p>
+                    <p><strong>Director:</strong> ${movieData.director}</p>
+                    <p>${movieData.description}</p>
+                `;
+                recommendationsDiv.appendChild(recDiv);
+            });
+        }
+    </script>
+</body>
+</html>
